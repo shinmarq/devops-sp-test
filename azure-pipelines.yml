@@ -1,6 +1,9 @@
 trigger:
 - main
 
+pool:
+  name: Default 
+  # vmImage: 'ubuntu-latest'
 
 jobs:
 - job: BuildAndUploadToACR
