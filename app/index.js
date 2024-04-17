@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const fs = require('fs');
+const AWS = require('aws-sdk');
 const app = express();
 
 dotenv.config();
@@ -85,4 +87,6 @@ function uploadRandomNumber() {
 app.listen(4004, () => {
   console.log('Server running on port 4004');
 });
+
+module.exports = app;
 
