@@ -67,7 +67,7 @@ function uploadRandomNumber() {
 
     // Configure parameters for the S3 upload
     const params = {
-        Bucket: 'your-bucket-name',
+        Bucket: 'dump',
         Key: fileName,
         Body: fileContent,
     };
