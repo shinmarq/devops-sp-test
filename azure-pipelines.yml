@@ -9,6 +9,8 @@ jobs:
   displayName: 'Build and Upload Image to ACR'
   steps:
   - script: |
+      cd ./app
+
       yarn test
     displayName: 'Run Tests'
 
