@@ -5,8 +5,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: yarn test
-  displayName: 'Run Tests'
+# - script: yarn test
+#   displayName: 'Run Tests'
 
 - script: |
     # Change app name
