@@ -1,0 +1,25 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: yarn test
+  displayName: 'Run Tests'
+
+- script: |
+    # Change app name
+    docker build -t myapp ./app
+
+    # Change ACR Name
+    az acr login --name sandboxsmq
+
+    # Change ACR Name
+    docker tag myapp sandboxsmq.azurecr.io/myapp
+
+    # Push Docker image to ACR
+    # Change ACR Name
+    docker push sandboxsmq.azurecr.io/myapp:latest
+  displayName: 'Build and Upload Image to ACR'
+  condition: succeeded()
