@@ -11,6 +11,8 @@ jobs:
   - script: |
       cd ./app
 
+      yarn install
+
       yarn test
     displayName: 'Run Tests'
 
