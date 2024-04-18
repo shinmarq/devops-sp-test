@@ -18,7 +18,7 @@ jobs:
 
   - script: |
       # Change app name
-      docker build -t myapp ./app
+      docker build --platform=linux/amd64 -t myapp ./app
 
       # Change ACR Name
       az acr login --name sandboxsmq
