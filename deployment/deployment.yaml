@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: sandboxsmq.azurecr.io/myapp:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        env:
+          - name: "REGION"
+            value: ""  
+          - name: "ACCESS_KEY_ID"
+            value: ""  
+          - name: "SECRET_ACCESS_KEY"
+            value: ""
+          - name: "BUCKET"
+            value: "sp-dump-042024"
+        resources:
+          limits:
+            cpu: 1
+            memory: 1024Mi
+          requests:
+            cpu: 200m
+            memory: 800Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 4004
+  type: LoadBalancer
+
